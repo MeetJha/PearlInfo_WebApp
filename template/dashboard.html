@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% block main %}
+<style type="text/css" media="screen">
+	.small-box
+	{
+		box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19); 
+
+	} 
+</style>
+<section class="content">
+	<div class="container-fluid">
+		<!-- Small boxes (Stat box) -->
+		<div class="row">
+			<div class="col-lg-3 col-6">
+				<!-- small box -->
+				<a href="/profile">
+					<div class="small-box bg-primary">
+						<div class="inner">
+							<h3></h3>
+							<p>Profile</p>
+						</div>
+					</div>
+				</a>
+			</div>
+			<div class="col-lg-3 col-6">
+				<!-- small box -->
+				<a href="/create_user">
+					<div class="small-box bg-white">
+						<div class="inner">
+							<h3></h3>
+							<p>Create User</p>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
+	</div>
+</section> 
+{% endblock %}

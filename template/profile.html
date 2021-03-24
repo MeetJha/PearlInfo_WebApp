@@ -1,0 +1,93 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block main  %}
+  {% if edit_profile %}
+    {% for x in edit_profile %}
+        <form class="form" action="/data_updated/{{x.id}}" method="POST" accept-charset="utf-8">
+            {% csrf_token %}
+            <label>Username:</label> <input type="number" class="form-control" name="username" value="{{x.username}}">
+
+  
+            <label>Phone number:</label> <input type="number" class="form-control" name="phone_no" value="{{x.phone_no}}">
+
+            <label>Email:</label> <input type="email" class="form-control" name="email" value="{{x.user.email}}">
+
+            <label>Address:</label> <input type="text" class="form-control" name="address" value="{{x.address}}">
+            <label>Date of Birth:</label> <input type="date" class="form-control" name="dob" value="{{x.dob}}">
+
+            <input type="submit"  class="btn btn-info" value="Submit" style="margin-top:80px;">
+            <input type="submit"  class="btn btn-danger" value="Reset" style="margin-top:80px;">
+        </form>
+    {% endfor %}
+  {% else %}
+    {% for x in data1 %}
+    <div class="container"> 
+      <div class="main-body">
+        <div class="row gutters-sm">
+          <div class="col-md-10">
+            <div class="card mb-3">
+              <div class="card-body">
+                <label style="font-size:25px;">Profile Data</label>
+                <a href="/edit_profile/{{x.id}}" class="btn btn-primary" style="float: right;">Edit</a><br/><br/><br/>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Username</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{x.user.username}}
+                  </div>
+                </div>
+                <hr><div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Full Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{x.user.first_name}} {{x.user.last_name}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Email</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{x.user.email}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Phone</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{x.phone_no}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Date of Birth</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{x.dob}}
+                  </div>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0">Address</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    {{x.address}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endblock %}
